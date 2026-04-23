@@ -44,6 +44,7 @@ export const Login = ({ onLogin }) => {
         width: "100%", maxWidth: 400,
         boxShadow: "0 4px 24px rgba(9,30,66,0.08)",
       }}>
+
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 24 }}>
           <div style={{
@@ -55,6 +56,7 @@ export const Login = ({ onLogin }) => {
           <span style={{ fontWeight: 800, fontSize: 20, color: COLORS.text }}>CollabDocs</span>
         </div>
 
+        {/* Heading */}
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <div style={{ fontWeight: 700, fontSize: 18, color: COLORS.text, marginBottom: 4 }}>
             Log in to your account
@@ -64,6 +66,7 @@ export const Login = ({ onLogin }) => {
           </div>
         </div>
 
+        {/* Success */}
         {success && (
           <div style={{
             background: COLORS.greenLight, color: COLORS.green,
@@ -79,11 +82,17 @@ export const Login = ({ onLogin }) => {
           </label>
           <input
             style={{ ...inputStyle, borderColor: errors.email ? COLORS.red : "#DFE1E6" }}
-            type="email" placeholder="you@example.com"
+            type="email"
+            placeholder="you@example.com"
             value={form.email}
-            onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: "" }); }}
+            onChange={(e) => {
+              setForm({ ...form, email: e.target.value });
+              setErrors({ ...errors, email: "" });
+            }}
           />
-          {errors.email && <div style={{ fontSize: 11, color: COLORS.red, marginTop: 4 }}>{errors.email}</div>}
+          {errors.email && (
+            <div style={{ fontSize: 11, color: COLORS.red, marginTop: 4 }}>{errors.email}</div>
+          )}
         </div>
 
         {/* Password */}
@@ -97,7 +106,10 @@ export const Login = ({ onLogin }) => {
               type={showPw ? "text" : "password"}
               placeholder="Enter your password"
               value={form.password}
-              onChange={(e) => { setForm({ ...form, password: e.target.value }); setErrors({ ...errors, password: "" }); }}
+              onChange={(e) => {
+                setForm({ ...form, password: e.target.value });
+                setErrors({ ...errors, password: "" });
+              }}
             />
             <button onClick={() => setShowPw(s => !s)} style={{
               position: "absolute", right: 10, top: "50%",
@@ -106,23 +118,34 @@ export const Login = ({ onLogin }) => {
               cursor: "pointer", color: COLORS.textMuted, fontSize: 14,
             }}>{showPw ? "🙈" : "👁"}</button>
           </div>
-          {errors.password && <div style={{ fontSize: 11, color: COLORS.red, marginTop: 4 }}>{errors.password}</div>}
+          {errors.password && (
+            <div style={{ fontSize: 11, color: COLORS.red, marginTop: 4 }}>{errors.password}</div>
+          )}
         </div>
 
-        <button onClick={handleLogin} style={{
-          width: "100%", padding: "10px",
-          background: COLORS.blue, color: "#fff",
-          border: "none", borderRadius: 6,
-          fontSize: 14, fontWeight: 700,
-          cursor: "pointer", fontFamily: "Inter, sans-serif",
-        }}>Log in</button>
+        {/* Login Button */}
+        <button
+          onClick={handleLogin}
+          style={{
+            width: "100%", padding: "10px",
+            background: COLORS.blue,
+            color: "#fff", border: "none", borderRadius: 6,
+            fontSize: 14, fontWeight: 700,
+            cursor: "pointer",
+            fontFamily: "Inter, sans-serif",
+          }}
+        >
+          Log in
+        </button>
 
+        {/* Divider */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "18px 0" }}>
           <div style={{ flex: 1, height: 1, background: COLORS.border }} />
           <span style={{ fontSize: 12, color: COLORS.textMuted }}>or</span>
           <div style={{ flex: 1, height: 1, background: COLORS.border }} />
         </div>
 
+        {/* Google */}
         <button style={{
           width: "100%", padding: "9px",
           background: "#fff", border: "1px solid #DFE1E6",
@@ -134,10 +157,12 @@ export const Login = ({ onLogin }) => {
           Continue with Google
         </button>
 
+        {/* Signup */}
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: COLORS.textMuted }}>
           Don't have an account?{" "}
           <span style={{ color: COLORS.blue, cursor: "pointer", fontWeight: 600 }}>Sign up free</span>
         </div>
+
       </div>
     </div>
   );
